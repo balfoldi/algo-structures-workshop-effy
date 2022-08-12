@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require_relative 'recursion.rb'
+require_relative 'word_split.rb'
 
 class FirstProblemTest < Minitest::Test
   def test_zero
@@ -42,5 +43,19 @@ class SecondProblemTest < MiniTest::Test
   def test_random
     n = rand(1000)
     assert_equal n.digits.sum, Recursion.sum_digits(n)
+  end
+end
+
+class ThirdProblemTest < Minitest::Test
+  def test_zero
+    assert_equal ['man'], WordSplit.word_split('man', ['man'])
+  end
+
+  def test_manrun
+    assert_equal ["the", "ran", "man"], WordSplit.word_split('themanran', ['the','ran','man'])
+  end
+
+  def test_another
+    assert_equal ["i", "love", "dogs", "John"], WordSplit.word_split('ilovedogsJohn',['i','am','a','dogs','lover','love','John'])
   end
 end
